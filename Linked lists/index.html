@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="styles.css" rel="stylesheet" />
+    <title>Linked lists</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🔗 Linked Lists: Think Like Building Blocks!</h1>
+
+      <!-- Table of Contents -->
+      <div class="toc">
+        <h3>📚 Table of Contents</h3>
+        <ul>
+          <li>
+            <a href="#basics">🧱 Part 1: Absolute Basics (Start Here!)</a>
+          </li>
+          <li>
+            <a href="#fundamentals"
+              >🔍 Part 2: Understanding the Fundamentals</a
+            >
+          </li>
+          <li>
+            <a href="#remove-duplicates"
+              >✂️ Part 3: Remove Duplicates (Detailed Walkthrough)</a
+            >
+          </li>
+          <li>
+            <a href="#all-operations">🛠️ Part 4: All Essential Operations</a>
+          </li>
+          <li>
+            <a href="#patterns">🎯 Part 5: Universal Patterns & Tricks</a>
+          </li>
+          <!-- <li><a href="#cheat-sheet">📋 Part 6: Interview Cheat Sheet</a></li>
+          <li><a href="#practice">🎮 Part 7: Interactive Practice</a></li> -->
+        </ul>
+      </div>
+
+      <div class="analogy" id="basics">
+        <h2>🧱 Real World Analogy</h2>
+        <p><strong>Imagine a treasure hunt!</strong></p>
+        <ul>
+          <li>
+            Each clue (node) has: <strong>treasure value</strong> +
+            <strong>directions to next clue</strong>
+          </li>
+          <li>The <strong>first clue</strong> is your starting point (HEAD)</li>
+          <li>Each clue <strong>points to</strong> the next one (.next)</li>
+          <li>The last clue says <strong>"END OF HUNT"</strong> (null)</li>
+        </ul>
+      </div>
+
+      <h2>📦 What is a Node?</h2>
+      <div class="visual-demo">
+        <div class="node">
+          <div class="node-value">5</div>
+          <div class="node-address">→ next clue</div>
+        </div>
+        <p>
+          <strong>Each box has:</strong> Value (5) + Arrow pointing to next box
+        </p>
+      </div>
+
+      <div class="code-block">
+        class ListNode { constructor(val) { this.val = val; // The treasure
+        (data) this.next = null; // Direction to next treasure (initially
+        unknown) } }
+      </div>
+
+      <h2>🔗 How Nodes Connect</h2>
+      <div class="visual-demo" id="linkedListDemo">
+        <div class="pointer">HEAD</div>
+        <span class="arrow">↓</span>
+        <div class="node">
+          <div class="node-value">1</div>
+          <div class="node-address">→</div>
+        </div>
+        <span class="arrow">→</span>
+        <div class="node">
+          <div class="node-value">1</div>
+          <div class="node-address">→</div>
+        </div>
+        <span class="arrow">→</span>
+        <div class="node">
+          <div class="node-value">2</div>
+          <div class="node-address">→</div>
+        </div>
+        <span class="arrow">→</span>
+        <div class="node">
+          <div class="node-value">3</div>
+          <div class="node-address">→ null</div>
+        </div>
+      </div>
+
+      <h2 id="fundamentals" class="section">🎯 The KEY Terms Explained</h2>
+
+      <div class="step">
+        <h3>HEAD = Starting Point</h3>
+        <p>
+          <strong>HEAD</strong> is like the
+          <strong>entrance to a building</strong>. It's just a reference to the
+          first node. Without HEAD, you can't find your linked list!
+        </p>
+        <div class="code-block">
+          let head = firstNode; // HEAD points to the first treasure
+        </div>
+      </div>
+
+      <div class="step">
+        <h3>CURRENT = Your Current Position</h3>
+        <p>
+          <strong>CURRENT</strong> is like
+          <strong>where you are standing right now</strong>. It's a pointer that
+          moves around the list.
+        </p>
+        <div class="code-block">
+          let current = head; // Start at the beginning
+        </div>
+      </div>
+
+      <div class="step">
+        <h3>.next = The Arrow/Direction</h3>
+        <p>
+          <strong>.next</strong> is like <strong>following the arrow</strong> to
+          the next treasure. It's how nodes are connected.
+        </p>
+        <div class="code-block">
+          current.next // Follow the arrow to next node
+        </div>
+      </div>
+
+      <h2>🚶‍♂️ Walking Through a Linked List</h2>
+
+      <div class="visual-demo">
+        <p><strong>Step-by-step movement:</strong></p>
+        <div class="step" id="walkthrough">
+          <button onclick="startWalkthrough()">▶️ Start Walkthrough</button>
+          <div id="walkSteps"></div>
+        </div>
+      </div>
+
+      <h2 class="section" id="remove-duplicates">
+        🔍 The Duplicate Removal Strategy
+      </h2>
+
+      <div class="analogy">
+        <h3>🎯 The "Peek Ahead" Method</h3>
+        <p>
+          Imagine you're walking and you can see the person in front of you:
+        </p>
+        <ul>
+          <li>
+            <strong>If they look exactly like you</strong> → Tell them to leave
+            (skip them)
+          </li>
+          <li>
+            <strong>If they look different</strong> → Walk forward to their
+            position
+          </li>
+          <li><strong>Keep doing this</strong> until you reach the end</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <h3>🧠 The Mental Model</h3>
+        <p>
+          <strong
+            >"I stay put when removing duplicates, I move forward when keeping
+            unique values"</strong
+          >
+        </p>
+
+        <div class="code-block">
+          while (current && current.next) { // While I can see someone ahead if
+          (current.val === current.next.val) { // Same person! Remove them
+          (skip) current.next = current.next.next; // Jump over duplicate // I
+          DON'T MOVE - stay in same position } else { // Different person! Move
+          forward current = current.next; // Step forward } }
+        </div>
+      </div>
+
+      <h2>🎮 Interactive Demo</h2>
+      <div class="visual-demo">
+        <p><strong>Remove duplicates from: [1, 1, 2, 3, 3]</strong></p>
+        <button onclick="startDemo()">🚀 Start Demo</button>
+        <div id="demoArea"></div>
+      </div>
+
+      <h2>🔑 Beginner's Cheat Sheet</h2>
+      <div class="step">
+        <h3>When you see a linked list problem, ask:</h3>
+        <ol>
+          <li><strong>"Where do I start?"</strong> → Usually at HEAD</li>
+          <li><strong>"How do I move?"</strong> → current = current.next</li>
+          <li>
+            <strong>"How do I compare?"</strong> → current.val with
+            current.next.val
+          </li>
+          <li>
+            <strong>"How do I remove?"</strong> → current.next =
+            current.next.next
+          </li>
+          <li>
+            <strong>"When do I stop?"</strong> → When current.next is null
+          </li>
+        </ol>
+      </div>
+      <!-- PART 4: ALL OPERATIONS -->
+      <div class="section" id="all-operations">
+        <h2>🛠️ Part 4: All Essential Operations</h2>
+
+        <div class="pattern-summary">
+          <h3>🎯 The Universal Pattern (Works for EVERYTHING!)</h3>
+          <div style="font-size: 1.2em; margin: 20px 0">
+            <div>
+              <span class="step-counter">1</span
+              ><strong>"Where am I?"</strong> → current pointer
+            </div>
+            <div>
+              <span class="step-counter">2</span
+              ><strong>"What do I need to do?"</strong> → the operation
+            </div>
+            <div>
+              <span class="step-counter">3</span
+              ><strong>"How do I connect the arrows?"</strong> → pointer
+              manipulation
+            </div>
+          </div>
+        </div>
+
+        <div class="operation-card">
+          <h3>1️⃣ INSERT AT HEAD (Beginning)</h3>
+          <div class="memory-trick">
+            <strong>🧠 Think:</strong> "Put new person at front of line"
+          </div>
+
+          <div class="visual-demo">
+            <code>BEFORE: HEAD → [1] → [2] → [3]</code><br />
+            <code>AFTER: HEAD → [NEW] → [1] → [2] → [3]</code>
+          </div>
+
+          <div class="code-title">Insert at Head</div>
+          <div class="code-block">
+            function insertAtHead(head, newValue) { // Step 1: Create new node
+            let newNode = new ListNode(newValue); // Step 2: New node points to
+            old head newNode.next = head; // Step 3: Update head to point to new
+            node return newNode; // This becomes the new head }
+          </div>
+
+          <div class="tip">
+            <strong>Key Insight:</strong> Always connect the new node FIRST,
+            then update head
+          </div>
+        </div>
+
+        <div class="operation-card">
+          <h3>2️⃣ INSERT AT TAIL (End)</h3>
+          <div class="memory-trick">
+            <strong>🧠 Think:</strong> "Walk to end of line, add person there"
+          </div>
+
+          <div class="visual-demo">
+            <code>BEFORE: [1] → [2] → [3] → null</code><br />
+            <code>AFTER: [1] → [2] → [3] → [NEW] → null</code>
+          </div>
+
+          <div class="code-title">Insert at Tail</div>
+          <div class="code-block">
+            function insertAtTail(head, newValue) { let newNode = new
+            ListNode(newValue); // Special case: empty list if (!head) return
+            newNode; // Step 1: Walk to the end let current = head; while
+            (current.next) { // While not at last node current = current.next; }
+            // Step 2: Connect last node to new node current.next = newNode;
+            return head; }
+          </div>
+
+          <div class="tip">
+            <strong>Key Insight:</strong> Find the last node (where .next is
+            null), then connect
+          </div>
+        </div>
+
+        <div class="operation-card">
+          <h3>3️⃣ INSERT AT POSITION</h3>
+          <div class="memory-trick">
+            <strong>🧠 Think:</strong> "Count steps, then squeeze in between"
+          </div>
+
+          <div class="visual-demo">
+            <code>Insert at position 2:</code><br />
+            <code>BEFORE: [1] → [2] → [3] → [4]</code><br />
+            <code>AFTER: [1] → [2] → [NEW] → [3] → [4]</code>
+          </div>
+
+          <div class="code-title">Insert at Position</div>
+          <div class="code-block">
+            function insertAtPosition(head, position, newValue) { let newNode =
+            new ListNode(newValue); // Special case: insert at beginning if
+            (position === 0) { newNode.next = head; return newNode; } // Step 1:
+            Walk to position-1 (one before target) let current = head; for (let
+            i = 0; i < position - 1; i++) { current = current.next; } // Step 2:
+            Insert between current and current.next newNode.next = current.next;
+            // New points to next current.next = newNode; // Current points to
+            new return head; }
+          </div>
+
+          <div class="tip">
+            <strong>Key Insight:</strong> Stop at position-1, then do the
+            "sandwich" insertion
+          </div>
+        </div>
+
+        <div class="operation-card">
+          <h3>4️⃣ DELETE A NODE</h3>
+          <div class="memory-trick">
+            <strong>🧠 Think:</strong> "Find person before target, make them
+            skip target"
+          </div>
+
+          <div class="visual-demo">
+            <code>Delete value 2:</code><br />
+            <code>BEFORE: [1] → [2] → [3] → [4]</code><br />
+            <code>AFTER: [1] → [3] → [4]</code>
+          </div>
+
+          <div class="code-title">Delete Node</div>
+          <div class="code-block">
+            function deleteNode(head, targetValue) { // Special case: delete
+            head if (head && head.val === targetValue) { return head.next; } //
+            Step 1: Find the node BEFORE the target let current = head; while
+            (current && current.next) { if (current.next.val === targetValue) {
+            // Step 2: Skip the target node current.next = current.next.next;
+            break; } current = current.next; } return head; }
+          </div>
+
+          <div class="tip">
+            <strong>Key Insight:</strong> Find the node BEFORE what you want to
+            delete
+          </div>
+        </div>
+
+        <div class="operation-card">
+          <h3>5️⃣ GET NODE VALUE AT POSITION</h3>
+          <div class="memory-trick">
+            <strong>🧠 Think:</strong> "Count steps and read the value"
+          </div>
+
+          <div class="code-title">Get Node Value</div>
+          <div class="code-block">
+            function getNodeValue(head, position) { // Step 1: Walk to the
+            position let current = head; for (let i = 0; i < position; i++) { if
+            (!current) return null; // Position doesn't exist current =
+            current.next; } // Step 2: Return the value return current ?
+            current.val : null; }
+          </div>
+        </div>
+
+        <div class="operation-card">
+          <h3>6️⃣ MERGE TWO SORTED LISTS</h3>
+          <div class="memory-trick">
+            <strong>🧠 Think:</strong> "Pick smaller value, move that pointer
+            forward"
+          </div>
+
+          <div class="code-title">Merge Two Sorted Lists</div>
+          <div class="code-block">
+            function mergeTwoLists(list1, list2) { // Create dummy head to
+            simplify logic let dummy = new ListNode(0); let current = dummy; //
+            Step 1: Compare and pick smaller while (list1 && list2) { if
+            (list1.val <= list2.val) { current.next = list1; list1 = list1.next;
+            } else { current.next = list2; list2 = list2.next; } current =
+            current.next; } // Step 2: Attach remaining nodes current.next =
+            list1 || list2; return dummy.next; // Skip dummy head }
+          </div>
+
+          <div class="tip">
+            <strong>Key Insight:</strong> Use a dummy head to avoid special
+            cases
+          </div>
+        </div>
+        <!-- PART 5: UNIVERSAL PATTERNS -->
+        <div class="section cheat-section" id="patterns">
+          <h2>🎯 Part 5: Universal Patterns & Memory Tricks</h2>
+
+          <div class="pattern-summary">
+            <h3>🔑 The Master Formula</h3>
+            <p style="font-size: 1.3em; margin: 20px 0">
+              <strong>WALK</strong> → <strong>IDENTIFY</strong> →
+              <strong>CONNECT</strong>
+            </p>
+            <p>
+              Every linked list operation is just a combination of these three
+              steps!
+            </p>
+          </div>
+
+          <div class="memory-trick">
+            <h3>🧠 Memory Shortcuts for Each Operation</h3>
+            <div class="quick-ref">
+              <div class="ref-card">
+                <h4>INSERT AT HEAD</h4>
+                <p>"New kid cuts to front of line"</p>
+                <code>newNode.next = head; return newNode;</code>
+              </div>
+              <div class="ref-card">
+                <h4>INSERT AT TAIL</h4>
+                <p>"Walk to end, add new person"</p>
+                <code>while(current.next) current = current.next;</code>
+              </div>
+              <div class="ref-card">
+                <h4>DELETE NODE</h4>
+                <p>"Find before target, make them skip"</p>
+                <code>current.next = current.next.next;</code>
+              </div>
+              <div class="ref-card">
+                <h4>GET VALUE</h4>
+                <p>"Count steps, read the sign"</p>
+                <code>for(let i=0; i&lt;pos; i++) current = current.next;</code>
+              </div>
+            </div>
+          </div>
+
+          <div class="analogy">
+            <h3>🎪 The "Aha!" Moment</h3>
+            <p>
+              <strong>All linked list problems are just variations of:</strong>
+            </p>
+            <ul>
+              <li><strong>Walking</strong> (moving current pointer)</li>
+              <li><strong>Connecting</strong> (changing .next pointers)</li>
+              <li><strong>Counting</strong> (for positions)</li>
+              <li><strong>Comparing</strong> (for conditions)</li>
+            </ul>
+            <p>
+              <strong
+                >Master these 4 basic moves, and you can solve ANY linked list
+                problem!</strong
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

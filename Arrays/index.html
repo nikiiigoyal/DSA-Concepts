@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+ <div class="container">
+    <!-- Header -->
+    <div class="header fade-in">
+      <h1>🚀 Arrays DSA</h1>
+      
+    </div>
+
+    <!-- Quick Reference -->
+    <div class="quick-ref fade-in">
+      <h2>📋 Quick Reference Card</h2>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <h3>🎯 Big O Cheat Sheet</h3>
+          <div class="complexity-badge">Access: O(1)</div>
+          <div class="complexity-badge">Search: O(n)</div>
+          <div class="complexity-badge">Insert: O(n)</div>
+          <div class="complexity-badge">Delete: O(n)</div>
+        </div>
+        <div class="ref-card">
+          <h3>🔑 Core Patterns</h3>
+          <div class="complexity-badge">Two Pointers</div>
+          <div class="complexity-badge">Sliding Window</div>
+          <div class="complexity-badge">Binary Search</div>
+          <div class="complexity-badge">Kadane's Algorithm</div>
+        </div>
+        <div class="ref-card">
+          <h3>💡 Memory Layout</h3>
+          <div class="code-block" data-lang="concept">
+arr = [10, 20, 30, 40]
+       [0] [1] [2] [3]  ← indices
+Memory: [10][20][30][40] ← contiguous</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Learning Tabs -->
+    <div class="problem-section fade-in">
+      <div class="tabs">
+        <button class="tab active" onclick="showTab('foundation')">🌱 Foundation</button>
+        <button class="tab" onclick="showTab('patterns')">🎯 Patterns</button>
+        <button class="tab" onclick="showTab('advanced')">🚀 Advanced</button>
+        <button class="tab" onclick="showTab('interview')">💼 Interview</button>
+      </div>
+
+      <!-- Foundation Tab -->
+      <div id="foundation" class="tab-content active">
+        <div class="pattern-card">
+          <h3>🔍 Problem 1: Find Maximum & Minimum</h3>
+          <p>Master the basics of array traversal and comparison</p>
+          
+          <div class="visual-demo">
+            <h4>🎬 Visual Demo</h4>
+            <div class="array-visual" id="maxmin-visual">
+              <div class="array-element" data-index="0">3</div>
+              <div class="array-element" data-index="1">1</div>
+              <div class="array-element" data-index="2">8</div>
+              <div class="array-element" data-index="3">2</div>
+              <div class="array-element" data-index="4">9</div>
+            </div>
+            <div class="pointer-visual">
+              <div class="pointer">max: 3</div>
+              <div class="pointer">min: 3</div>
+              <div class="pointer">current: 3</div>
+            </div>
+          </div>
+
+          <div class="code-block" data-lang="javascript">
+function findMaxMin(arr) {
+  if (arr.length === 0) return null;
+  
+  let max = arr[0];
+  let min = arr[0];
+  
+  console.log(`🎯 Starting with max=${max}, min=${min}`);
+  
+  for (let i = 1; i < arr.length; i++) {
+    console.log(`🔍 Checking element: ${arr[i]}`);
+    
+    if (arr[i] > max) {
+      max = arr[i];
+      console.log(`✅ New maximum found: ${max}`);
+    }
+    if (arr[i] < min) {
+      min = arr[i];
+      console.log(`✅ New minimum found: ${min}`);
+    }
+  }
+  
+  return { max, min };
+}</div>
+
+          <button class="run-button" onclick="runMaxMin()">▶️ Run Demo</button>
+          <div class="output" id="maxmin-output">Click "Run Demo" to see the algorithm in action!</div>
+        </div>
+
+        <div class="pattern-card">
+          <h3>🔄 Problem 2: Reverse Array (Two Pointers)</h3>
+          <p>Learn the fundamental two-pointers technique</p>
+          
+          <div class="visual-demo">
+            <h4>🎬 Visual Demo</h4>
+            <div class="array-visual" id="reverse-visual">
+              <div class="array-element pointer" data-index="0">1</div>
+              <div class="array-element" data-index="1">2</div>
+              <div class="array-element" data-index="2">3</div>
+              <div class="array-element" data-index="3">4</div>
+              <div class="array-element pointer" data-index="4">5</div>
+            </div>
+            <div class="pointer-visual">
+              <div class="pointer">left: 0</div>
+              <div class="pointer">right: 4</div>
+            </div>
+          </div>
+
+          <div class="code-block" data-lang="javascript">
+function reverseArray(arr) {
+let left = 0;
+let right = arr.length - 1;
+console.log(🎯 Original array: [${arr.join(', ')}]);
+while (left < right) {
+console.log(🔄 Swapping arr[${left}]=${arr[left]} with arr[${right}]=${arr[right]});
+// Swap elements
+[arr[left], arr[right]] = [arr[right], arr[left]];
+
+left++;
+right--;
+
+console.log(`📊 Current array: [${arr.join(', ')}]`);
+}
+return arr;
+}</div>
+      <button class="run-button" onclick="runReverse()">▶️ Run Demo</button>
+      <div class="output" id="reverse-output">Click "Run Demo" to see the algorithm in action!</div>
+    </div>
+  </div>
+
+  <!-- Patterns Tab -->
+  <div id="patterns" class="tab-content">
+    <div class="pattern-card">
+      <h3>🎯 Problem: Two Sum</h3>
+      <p>Master hash map optimization for complement problems</p>
+      
+      <div class="visual-demo">
+        <h4>🎬 Visual Demo</h4>
+        <div class="array-visual" id="twosum-visual">
+          <div class="array-element" data-index="0">2</div>
+          <div class="array-element" data-index="1">7</div>
+          <div class="array-element" data-index="2">11</div>
+          <div class="array-element" data-index="3">15</div>
+        </div>
+        <div class="pointer-visual">
+          <div class="pointer">target: 9</div>
+          <div class="pointer">need: 7</div>
+        </div>
+      </div>
+
+      <div class="code-block" data-lang="javascript">
+function twoSum(nums, target) {
+const map = new Map();
+console.log(🎯 Looking for two numbers that sum to ${target});
+console.log(📊 Array: [${nums.join(', ')}]);
+for (let i = 0; i < nums.length; i++) {
+const complement = target - nums[i];
+console.log(🔍 At index ${i}: number=${nums[i]}, need=${complement});
+if (map.has(complement)) {
+  console.log(`✅ Found pair! ${complement} + ${nums[i]} = ${target}`);
+  return [map.get(complement), i];
+}
+
+map.set(nums[i], i);
+console.log(`📝 Added ${nums[i]} to map at index ${i}`);
+}
+return [];
+}</div>
+      <button class="run-button" onclick="runTwoSum()">▶️ Run Demo</button>
+      <div class="output" id="twosum-output">Click "Run Demo" to see the algorithm in action!</div>
+    </div>
+
+    <div class="pattern-card">
+      <h3>🪟 Problem: Sliding Window Maximum</h3>
+      <p>Learn the sliding window technique for subarray problems</p>
+      
+      <div class="visual-demo">
+        <h4>🎬 Visual Demo</h4>
+        <div class="array-visual" id="sliding-visual">
+          <div class="array-element highlight" data-index="0">2</div>
+          <div class="array-element highlight" data-index="1">1</div>
+          <div class="array-element highlight" data-index="2">5</div>
+          <div class="array-element" data-index="3">1</div>
+          <div class="array-element" data-index="4">3</div>
+          <div class="array-element" data-index="5">2</div>
+        </div>
+        <div class="pointer-visual">
+          <div class="pointer">window size: 3</div>
+          <div class="pointer">current sum: 8</div>
+        </div>
+      </div>
+
+      <div class="code-block" data-lang="javascript">
+function maxSumSubarray(arr, k) {
+if (arr.length < k) return null;
+console.log(🎯 Finding max sum of ${k} consecutive elements);
+console.log(📊 Array: [${arr.join(', ')}]);
+// Calculate first window
+let windowSum = 0;
+for (let i = 0; i < k; i++) {
+windowSum += arr[i];
+}
+console.log(🪟 First window [${arr.slice(0, k).join(', ')}] = ${windowSum});
+let maxSum = windowSum;
+// Slide the window
+for (let i = k; i < arr.length; i++) {
+windowSum = windowSum - arr[i - k] + arr[i];
+const window = arr.slice(i - k + 1, i + 1);
+console.log(`🪟 Window [${window.join(', ')}] = ${windowSum}`);
+maxSum = Math.max(maxSum, windowSum);
+}
+console.log(✅ Maximum sum: ${maxSum});
+return maxSum;
+}</div>
+      <button class="run-button" onclick="runSlidingWindow()">▶️ Run Demo</button>
+      <div class="output" id="sliding-output">Click "Run Demo" to see the algorithm in action!</div>
+    </div>
+  </div>
+
+  <!-- Advanced Tab -->
+  <div id="advanced" class="tab-content">
+    <div class="pattern-card">
+      <h3>🏆 Problem: Maximum Subarray Sum (Kadane's Algorithm)</h3>
+      <p>Master dynamic programming with the famous Kadane's algorithm</p>
+      
+      <div class="visual-demo">
+        <h4>🎬 Visual Demo</h4>
+        <div class="array-visual" id="kadane-visual">
+          <div class="array-element" data-index="0">-2</div>
+          <div class="array-element" data-index="1">1</div>
+          <div class="array-element" data-index="2">-3</div>
+          <div class="array-element highlight" data-index="3">4</div>
+          <div class="array-element highlight" data-index="4">-1</div>
+          <div class="array-element highlight" data-index="5">2</div>
+          <div class="array-element highlight" data-index="6">1</div>
+          <div class="array-element" data-index="7">-5</div>
+          <div class="array-element" data-index="8">4</div>
+        </div>
+        <div class="pointer-visual">
+          <div class="pointer">max so far: 6</div>
+          <div class="pointer">max ending here: 6</div>
+        </div>
+      </div>
+
+      <div class="code-block" data-lang="javascript">
+function maxSubarraySum(arr) {
+let maxSoFar = arr[0];
+let maxEndingHere = arr[0];
+console.log(🎯 Kadane's Algorithm - Finding Maximum Subarray Sum);
+console.log(📊 Array: [${arr.join(', ')}]);
+console.log(🚀 Start: maxSoFar=${maxSoFar}, maxEndingHere=${maxEndingHere});
+for (let i = 1; i < arr.length; i++) {
+// Either start new subarray or extend existing one
+maxEndingHere = Math.max(arr[i], maxEndingHere + arr[i]);
+maxSoFar = Math.max(maxSoFar, maxEndingHere);
+const decision = arr[i] > maxEndingHere - arr[i] ? "start new" : "extend";
+console.log(`📍 i=${i}, arr[i]=${arr[i]}, decision=${decision}`);
+console.log(`   maxEndingHere=${maxEndingHere}, maxSoFar=${maxSoFar}`);
+}
+console.log(✅ Maximum subarray sum: ${maxSoFar});
+return maxSoFar;
+}</div>
+      <button class="run-button" onclick="runKadane()">▶️ Run Demo</button>
+      <div class="output" id="kadane-output">Click "Run Demo" to see the algorithm in action!</div>
+    </div>
+  </div>
+
+  <!-- Interview Tab -->
+  <div id="interview" class="tab-content">
+    <div class="pattern-card">
+      <h3>💼 Top Interview Questions</h3>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <h4>🟢 Easy Level</h4>
+          <ul>
+            <li>Two Sum</li>
+            <li>Best Time to Buy/Sell Stock</li>
+            <li>Remove Duplicates</li>
+            <li>Move Zeros</li>
+            <li>Plus One</li>
+          </ul>
+        </div>
+        <div class="ref-card">
+          <h4>🟡 Medium Level</h4>
+          <ul>
+            <li>3Sum</li>
+            <li>Container With Most Water</li>
+            <li>Product Array Except Self</li>
+            <li>Rotate Array</li>
+            <li>Maximum Subarray</li>
+          </ul>
+        </div>
+        <div class="ref-card">
+          <h4>🔴 Hard Level</h4>
+          <ul>
+            <li>Trapping Rain Water</li>
+            <li>Median of Two Sorted Arrays</li>
+            <li>Sliding Window Maximum</li>
+            <li>Minimum Window Substring</li>
+            <li>Longest Consecutive Sequence</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Web Development Applications -->
+<div class="web-app-section fade-in">
+  <h2>🌐 Real-World Web Development Applications</h2>
+  <div class="ref-grid">
+    <div class="ref-card">
+      <h3>⚛️ React/Vue State Management</h3>
+      <div class="code-block" data-lang="javascript">
+// Array operations in React state
+const [todos, setTodos] = useState([]);
+// Add (push pattern)
+setTodos([...todos, newTodo]);
+// Remove (filter pattern)
+setTodos(todos.filter(todo => todo.id !== id));
+// Update (map pattern)
+setTodos(todos.map(todo =>
+todo.id === id ? {...todo, completed: true} : todo
+));</div>
+</div>
+<div class="ref-card">
+<h3>🔍 Search & Filter</h3>
+<div class="code-block" data-lang="javascript">
+// Real-time search with debouncing
+function searchUsers(users, query) {
+return users.filter(user =>
+user.name.toLowerCase()
+.includes(query.toLowerCase())
+);
+}
+// Multi-criteria sorting
+users.sort((a, b) => {
+if (a.age !== b.age) return a.age - b.age;
+return a.name.localeCompare(b.name);
+});</div>
+</div>
+</div>
+</div>
+<!-- Progress Tracker -->
+<div class="problem-section fade-in">
+  <h2>📈 Your Learning Progress</h2>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+  <p id="progress-text">Complete problems to track your progress!</p>
+  <button class="run-button" onclick="updateProgress()">🎯 Mark Problem Complete</button>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>

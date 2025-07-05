@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>SPA</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1 class="title">SPA Magic ✨</h1>
+        <p class="subtitle">Interactive Single Page Application Demo</p>
+      </div>
+
+      <div class="nav-container">
+        <div class="nav-tabs">
+          <button class="nav-tab active" data-page="home">🏠 Home</button>
+          <button class="nav-tab" data-page="concepts">🧠 Concepts</button>
+          <button class="nav-tab" data-page="routing">🗺️ Routing</button>
+          <button class="nav-tab" data-page="state">⚡ State</button>
+          <button class="nav-tab" data-page="lifecycle">🔄 Lifecycle</button>
+        </div>
+      </div>
+
+      <div class="content-area">
+        <div class="page-content active" id="home">
+          <h2 class="concept-title">Welcome to SPA Learning! 🚀</h2>
+          <div class="concept-card">
+            <h3 class="concept-title">What is a Single Page Application?</h3>
+            <p class="concept-description">
+              A SPA is a web application that loads a single HTML page and
+              dynamically updates content without full page reloads. This
+              creates smooth, app-like experiences!
+            </p>
+            <div class="visual-demo">
+              <div class="demo-box" onclick="animateBox(this)">Click Me!</div>
+              <div class="demo-box" onclick="animateBox(this)">And Me!</div>
+              <div class="demo-box" onclick="animateBox(this)">Me Too!</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-content" id="concepts">
+          <h2 class="concept-title">Core SPA Concepts 🎯</h2>
+
+          <div class="concept-card">
+            <h3 class="concept-title">1. Dynamic Content Loading</h3>
+            <p class="concept-description">
+              Content changes without page refresh, creating seamless user
+              experiences.
+            </p>
+          </div>
+
+          <div class="concept-card">
+            <h3 class="concept-title">2. Client-Side Routing</h3>
+            <p class="concept-description">
+              Navigation happens in the browser without server requests for each
+              page.
+            </p>
+          </div>
+
+          <div class="concept-card">
+            <h3 class="concept-title">3. State Management</h3>
+            <p class="concept-description">
+              Application state is maintained in memory, allowing for instant
+              interactions.
+            </p>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4>Traditional Web App</h4>
+              <p>Server renders each page → Full page reload → New request</p>
+            </div>
+            <div class="timeline-item">
+              <h4>Single Page App</h4>
+              <p>Client renders content → Dynamic updates → Same page</p>
+            </div>
+            <div class="timeline-item">
+              <h4>Modern SPA</h4>
+              <p>Component-based → Virtual DOM → Optimized rendering</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-content" id="routing">
+          <h2 class="concept-title">Client-Side Routing 🗺️</h2>
+
+          <div class="concept-card">
+            <h3 class="concept-title">Routing Simulation</h3>
+            <p class="concept-description">
+              Click on different routes to see how SPAs handle navigation
+              without page reloads:
+            </p>
+
+            <div class="route-simulation">
+              <div
+                class="route-box current"
+                onclick="simulateRoute(this, '/home')"
+              >
+                <h4>/home</h4>
+                <p>Home Page</p>
+              </div>
+              <div class="route-box" onclick="simulateRoute(this, '/about')">
+                <h4>/about</h4>
+                <p>About Page</p>
+              </div>
+              <div class="route-box" onclick="simulateRoute(this, '/contact')">
+                <h4>/contact</h4>
+                <p>Contact Page</p>
+              </div>
+            </div>
+
+            <div class="interactive-demo">
+              <div class="demo-title">
+                Current Route: <span id="currentRoute">/home</span>
+              </div>
+              <p>Notice how the URL changes without page reload! 🎉</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-content" id="state">
+          <h2 class="concept-title">State Management ⚡</h2>
+
+          <div class="concept-card">
+            <h3 class="concept-title">Interactive State Demo</h3>
+            <p class="concept-description">
+              State persists across navigation in SPAs. Try changing the counter
+              and switching tabs!
+            </p>
+
+            <div class="state-counter">
+              Counter: <span id="counter">0</span>
+            </div>
+
+            <div class="counter-buttons">
+              <button class="counter-btn" onclick="updateCounter(-1)">
+                - Decrease
+              </button>
+              <button class="counter-btn" onclick="updateCounter(1)">
+                + Increase
+              </button>
+              <button class="counter-btn" onclick="resetCounter()">
+                🔄 Reset
+              </button>
+            </div>
+
+            <div class="interactive-demo">
+              <div class="demo-title">State Persistence</div>
+              <p>
+                This counter value stays the same even when you navigate between
+                tabs! That's the power of client-side state management.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-content" id="lifecycle">
+          <h2 class="concept-title">Component Lifecycle 🔄</h2>
+
+          <div class="concept-card">
+            <h3 class="concept-title">Lifecycle Visualization</h3>
+            <p class="concept-description">
+              Watch how components mount, update, and unmount in a SPA:
+            </p>
+
+            <div class="timeline">
+              <div class="timeline-item">
+                <h4>🎬 Mount</h4>
+                <p>Component is created and added to the DOM</p>
+              </div>
+              <div class="timeline-item">
+                <h4>🔄 Update</h4>
+                <p>Component re-renders when state or props change</p>
+              </div>
+              <div class="timeline-item">
+                <h4>🎭 Unmount</h4>
+                <p>Component is removed from DOM (cleanup)</p>
+              </div>
+            </div>
+
+            <div class="interactive-demo">
+              <div class="demo-title">Lifecycle Demo</div>
+              <button class="counter-btn" onclick="demonstrateLifecycle()">
+                🎬 Show Lifecycle
+              </button>
+              <div id="lifecycleDemo" style="margin-top: 20px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

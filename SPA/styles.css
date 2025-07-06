@@ -1,4 +1,4 @@
-* {
+ * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -343,10 +343,187 @@
         }
 
         @media (max-width: 768px) {
-            .title { font-size: 2rem; }
-            .nav-tabs { flex-direction: column; align-items: center; }
-            .nav-tab { width: 200px; }
-            .timeline-item { margin-left: 0 !important; margin-right: 0 !important; }
-            .timeline::before { display: none; }
-            .timeline-item::before { display: none; }
+            .container {
+                padding: 10px;
+            }
+            
+            .title { 
+                font-size: 2rem; 
+                margin-bottom: 5px;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .nav-container {
+                padding: 15px;
+                margin: 20px 0;
+            }
+            
+            .nav-tabs { 
+                flex-direction: column; 
+                align-items: center; 
+                gap: 10px;
+            }
+            
+            .nav-tab { 
+                width: 100%;
+                max-width: 250px;
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            
+            .content-area {
+                padding: 20px;
+                margin: 20px 0;
+            }
+            
+            .concept-card {
+                padding: 20px;
+                margin: 15px 0;
+            }
+            
+            .concept-title {
+                font-size: 1.3rem;
+                margin-bottom: 10px;
+            }
+            
+            .concept-description {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+            
+            .visual-demo {
+                padding: 15px;
+                text-align: center;
+            }
+            
+            .demo-box {
+                width: 80px;
+                height: 80px;
+                margin: 8px;
+                font-size: 0.9rem;
+            }
+            
+            .timeline-item { 
+                margin-left: 0 !important; 
+                margin-right: 0 !important; 
+                padding: 15px;
+                margin: 15px 0;
+            }
+            
+            .timeline::before { 
+                display: none; 
+            }
+            
+            .timeline-item::before { 
+                display: none; 
+            }
+            
+            .route-simulation {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .route-box {
+                width: 100%;
+                max-width: 250px;
+                padding: 15px;
+                margin: 5px 0;
+            }
+            
+            .state-counter {
+                font-size: 1.5rem;
+                padding: 15px;
+                margin: 15px 0;
+            }
+            
+            .counter-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .counter-btn {
+                width: 100%;
+                max-width: 200px;
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            
+            .interactive-demo {
+                padding: 20px;
+                margin: 15px 0;
+            }
+            
+            .demo-title {
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title { 
+                font-size: 1.5rem; 
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .nav-container {
+                padding: 10px;
+            }
+            
+            .nav-tab { 
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .content-area {
+                padding: 15px;
+            }
+            
+            .concept-card {
+                padding: 15px;
+            }
+            
+            .concept-title {
+                font-size: 1.2rem;
+            }
+            
+            .concept-description {
+                font-size: 0.9rem;
+            }
+            
+            .demo-box {
+                width: 70px;
+                height: 70px;
+                margin: 5px;
+                font-size: 0.8rem;
+            }
+            
+            .state-counter {
+                font-size: 1.3rem;
+                padding: 12px;
+            }
+            
+            .counter-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .route-box {
+                padding: 12px;
+            }
+            
+            .interactive-demo {
+                padding: 15px;
+            }
+            
+            .demo-title {
+                font-size: 1rem;
+            }
         }

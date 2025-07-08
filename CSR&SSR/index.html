@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>CSR vs SSR</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🚀 CSR vs SSR</h1>
+
+      <div class="comparison">
+        <div class="method csr">
+          <h2>🔴 CSR (Client-Side Rendering)</h2>
+
+          <div class="analogy">
+            <h3>🏪 Like a DIY Furniture Store</h3>
+            <p>
+              You go to IKEA, get flat-packed furniture, and assemble it at
+              home. The store gives you pieces, you build it yourself.
+            </p>
+          </div>
+
+          <div class="visual-flow">
+            <div class="step">Browser Requests</div>
+            <div class="arrow">→</div>
+            <div class="step">Gets Empty HTML</div>
+            <div class="arrow">→</div>
+            <div class="step">Downloads JS</div>
+            <div class="arrow">→</div>
+            <div class="step">Builds Page</div>
+          </div>
+
+          <div class="pros-cons">
+            <h4>✅ Pros:</h4>
+            <div class="pros">
+              • Super interactive after loading<br />
+              • Cheap server costs<br />
+              • Great for web apps
+            </div>
+
+            <h4>❌ Cons:</h4>
+            <div class="cons">
+              • Slow first load<br />
+              • Bad for SEO<br />
+              • White screen while loading
+            </div>
+          </div>
+        </div>
+
+        <div class="method ssr">
+          <h2>🟢 SSR (Server-Side Rendering)</h2>
+
+          <div class="analogy">
+            <h3>🍕 Like a Pizza Delivery</h3>
+            <p>
+              You order pizza, it's made in the kitchen, and delivered ready to
+              eat. No assembly required!
+            </p>
+          </div>
+
+          <div class="visual-flow">
+            <div class="step">Browser Requests</div>
+            <div class="arrow">→</div>
+            <div class="step">Server Builds HTML</div>
+            <div class="arrow">→</div>
+            <div class="step">Sends Complete Page</div>
+            <div class="arrow">→</div>
+            <div class="step">Instant Display</div>
+          </div>
+
+          <div class="pros-cons">
+            <h4>✅ Pros:</h4>
+            <div class="pros">
+              • Fast first load<br />
+              • Great for SEO<br />
+              • Works without JavaScript
+            </div>
+
+            <h4>❌ Cons:</h4>
+            <div class="cons">
+              • More server work<br />
+              • Higher hosting costs<br />
+              • Full page reloads
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-section">
+        <h2 style="text-align: center; margin-bottom: 30px">
+          🎮 Interactive Demo
+        </h2>
+        <div class="demo-buttons">
+          <button class="demo-btn csr-btn" onclick="simulateCSR()">
+            Experience CSR Loading
+          </button>
+          <button class="demo-btn ssr-btn" onclick="simulateSSR()">
+            Experience SSR Loading
+          </button>
+        </div>
+
+        <div class="demo-area" id="demoArea">
+          <div style="text-align: center; padding: 50px">
+            <h3>👆 Click a button above to see the difference!</h3>
+            <p>Feel the actual experience of CSR vs SSR loading</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-summary">
+        <h3>⚡ Quick Decision Guide</h3>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <h4>🔴 Choose CSR When:</h4>
+            <p>
+              • Building a web app (like Gmail)<br />
+              • Users will interact a lot<br />
+              • SEO doesn't matter much<br />
+              • Want cheap hosting
+            </p>
+          </div>
+          <div class="summary-item">
+            <h4>🟢 Choose SSR When:</h4>
+            <p>
+              • Building a website (like blog)<br />
+              • SEO is important<br />
+              • Need fast first load<br />
+              • Content doesn't change much
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

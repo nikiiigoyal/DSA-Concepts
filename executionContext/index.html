@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Execution context</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="panel code-panel">
+        <h2>📝 Code Editor</h2>
+        <div class="code-examples">
+          <button class="example-btn" onclick="loadExample('basic')">
+            Basic Function
+          </button>
+          <button class="example-btn" onclick="loadExample('closure')">
+            Closure
+          </button>
+          <button class="example-btn" onclick="loadExample('async')">
+            Async/Await
+          </button>
+          <button class="example-btn" onclick="loadExample('recursion')">
+            Recursion
+          </button>
+        </div>
+        <div class="controls">
+          <button class="btn" onclick="runCode()" id="runBtn">▶️ Run</button>
+          <button class="btn" onclick="stepCode()" id="stepBtn" disabled>
+            👣 Step
+          </button>
+          <button class="btn" onclick="resetCode()" id="resetBtn">
+            🔄 Reset
+          </button>
+          <div class="speed-control">
+            <label>Speed:</label>
+            <input
+              type="range"
+              min="100"
+              max="2000"
+              value="800"
+              class="speed-slider"
+              id="speedSlider"
+            />
+          </div>
+        </div>
+        <div class="status">
+          <span>Status: <span id="status">Ready</span></span>
+          <span>Line: <span id="currentLine">-</span></span>
+        </div>
+        <div class="code-editor" id="codeEditor">
+          <div class="code-line">
+            <span class="line-number">1</span>function calculate(a, b) {
+          </div>
+          <div class="code-line">
+            <span class="line-number">2</span> let sum = a + b;
+          </div>
+          <div class="code-line">
+            <span class="line-number">3</span> let product = a * b;
+          </div>
+          <div class="code-line">
+            <span class="line-number">4</span> return { sum, product };
+          </div>
+          <div class="code-line"><span class="line-number">5</span>}</div>
+          <div class="code-line"><span class="line-number">6</span></div>
+          <div class="code-line">
+            <span class="line-number">7</span>let x = 5;
+          </div>
+          <div class="code-line">
+            <span class="line-number">8</span>let y = 3;
+          </div>
+          <div class="code-line">
+            <span class="line-number">9</span>let result = calculate(x, y);
+          </div>
+          <div class="code-line">
+            <span class="line-number">10</span>console.log(result);
+          </div>
+        </div>
+      </div>
+
+      <div class="panel execution-panel">
+        <h2>🧠 Execution Context</h2>
+
+        <div>
+          <h3>📚 Call Stack</h3>
+          <div class="call-stack" id="callStack">
+            <div class="stack-frame active">
+              <div class="frame-name">Global Context</div>
+              <div class="frame-vars">Global execution context</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3>📊 Variables</h3>
+          <div class="variables" id="variables">
+            <div class="var-item">
+              <span class="var-name">x</span>
+              <span
+                ><span class="var-value">undefined</span>
+                <span class="var-type">(undefined)</span></span
+              >
+            </div>
+            <div class="var-item">
+              <span class="var-name">y</span>
+              <span
+                ><span class="var-value">undefined</span>
+                <span class="var-type">(undefined)</span></span
+              >
+            </div>
+            <div class="var-item">
+              <span class="var-name">result</span>
+              <span
+                ><span class="var-value">undefined</span>
+                <span class="var-type">(undefined)</span></span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3>📝 Execution Log</h3>
+          <div class="execution-log" id="executionLog">
+            <div class="log-entry">Ready to execute...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

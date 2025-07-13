@@ -458,7 +458,7 @@
             }
         }
 
-        /* Large Desktop */
+        
         @media (min-width: 1400px) {
             .container {
                 padding: 50px;
